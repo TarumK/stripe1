@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Главная. Магазин смешных товаров
+{% endblock title %}
+
+{% block content %}
+
+{% for item in items %}
+<h1>
+<a href="/item/{{ item.id }}">{{ item.name }} {{ item.description }} {{ item.price }}</a>
+</h1>
+<p>
+    {% endfor %}
+<!--    <button id="buyBtn">Buy</button>-->
+
+{% endblock %}

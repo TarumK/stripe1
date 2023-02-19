@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Детальная информация по заказу. Магазин смешных товаров
+{% endblock title %}
+
+{% block content %}
+<div align="center">
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    <p>Price: {{ item.price }}</p>
+    <button id="buyBtn">Buy</button>
+    {% csrf_token %}
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<!--Прослушка DOM-объекта (кнопка "Оплатить") на предмет нажатия и формирования json для передачи //-->
+<!--в функцию преставления идентификатора выбранного товара //-->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var buyBtn = document.getElementById('buyBtn');
+        buyBtn.addEventListener('click', function() {
+            fetch('/buy/{{ item.id }}')
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    var stripe = Stripe('pk_test_51Mc50PDwyS9nSQ0XnCrComvKlev8b2RPudXVJGDBML9vcwrdCMKrud3rTEE4XegQJa76FS2M7WhCw1NEpcxBbILF00ol0KW2Lo');
+                    stripe.redirectToCheckout({
+                        sessionId: data.sessionId
+                    }).then(function(result) {
+                        console.log(result.error.message);
+                    });
+                });
+        });
+    </script>
+{% endblock %}

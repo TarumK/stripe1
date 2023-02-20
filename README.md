@@ -8,35 +8,44 @@ http://95.163.236.138:8000/
 Как установить проект
 (Разворачивал на vps-серверах с Ubuntu 20.04 LTS и Debian 11)
 
+
 Клонировать репозиторий и перейти в него командной строкой:
 
 git clone https://github.com/TarumK/stripe1.git
 
 cd stripe1
 
+
 Создать и активировать виртуальное окружение:
 
 python3 -m venv venv
+
 source venv/bin/activate
+
 
 Установить зависимости из файла requirements.txt:
 
 pip install -r requirements.txt
 
 Настроить ALLOWED_HOSTS в файле проекта settings.py
+
 ALLOWED_HOSTS = ['<IP_adress сервера>']
 
 Так как я делал коммиты и пушил вместе с базой данных(она маленькая), то делать миграцию необязательно.
 А так при необходимости можно сделать миграцию
 Выполнить миграции:
 
+
 cd stripe1
+
 python3 manage.py migrate
+
 
 Запустить проект:
 python3 manage.py runserver
 
 Стек технологий: Python 3, Django 4.1.7, JS, Stripe API 5.1.1
+
 Автор проекта - Мурат Кябишев
 
 Бонусная часть задания с непрерывным потоком платежей и оплатой подписок пока не решил,

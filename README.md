@@ -13,15 +13,18 @@ git clone https://github.com/TarumK/stripe1.git
 cd stripe1
 
 Создать и активировать виртуальное окружение:
+
 python3 -m venv venv
 source venv/bin/activate
 
 Установить зависимости из файла requirements.txt:
+
 pip install -r requirements.txt
 
 Так как я делал коммиты и пушил вместе с базой данных(она маленькая), то делать миграцию необязательно.
 А так при необходимости можно сделать миграцию
 Выполнить миграции:
+
 cd stripe1
 python3 manage.py migrate
 

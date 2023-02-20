@@ -5,13 +5,31 @@
 {% endblock title %}
 
 {% block content %}
-
+<div align="center">
+<table width = "100%">
+    <caption>Товарные позиции и услуги маркетплейса (цена в $)</caption>
+    <thead>
+        <tr>
+            <th scope="col">Наименование</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Цена</th>
+        </tr>
+    </thead>
 {% for item in items %}
-<h1>
-<a href="/item/{{ item.id }}">{{ item.name }} {{ item.description }} {{ item.price }}</a>
-</h1>
+    <tbody>
+        <tr>
+            <td><a href="/item/{{ item.id }}">{{ item.name }}</a></td> <td>{{ item.description }}</td> <td>{{ item.price }}</td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+</div>
+<!--<h1>-->
+
+<!--<a href="/item/{{ item.id }}">{{ item.name }} {{ item.description }} {{ item.price }}</a>-->
+<!--</h1>-->
 <p>
-    {% endfor %}
+
 <!--    <button id="buyBtn">Buy</button>-->
 
 {% endblock %}

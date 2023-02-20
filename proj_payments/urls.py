@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('buy/<int:item_id>/', views.buy_item, name='buy_item'),
     path('item/<int:item_id>/', views.item_detail, name='item_detail'),
-    path('', views.index, name="index"),
+    path('', views.index, name='index'),
     path('success/', views.success, name='success'),
     path('cancel/', views.cancel, name='cancel'),
 
